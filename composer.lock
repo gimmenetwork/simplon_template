@@ -1,0 +1,109 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "df6dd2f8ff2e72ef82f9afa83211b6b8",
+    "packages": [
+        {
+            "name": "simplon/mustache",
+            "version": "0.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fightbulc/simplon_mustache.git",
+                "reference": "2b65d52cb1ad08bd34dcc045d9225e20660c91dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fightbulc/simplon_mustache/zipball/2b65d52cb1ad08bd34dcc045d9225e20660c91dc",
+                "reference": "2b65d52cb1ad08bd34dcc045d9225e20660c91dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Simplon\\Mustache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tino Ehrich",
+                    "email": "tino@bigpun.me",
+                    "role": "developer"
+                }
+            ],
+            "description": "Lightweight & fast implementation of Mustache - Logic-less templates.",
+            "homepage": "https://github.com/fightbulc/simplon_mustache",
+            "keywords": [
+                "fast",
+                "leightweight",
+                "less",
+                "logic",
+                "logic-less",
+                "mustache",
+                "template"
+            ],
+            "time": "2014-11-14 11:51:35"
+        },
+        {
+            "name": "simplon/phtml",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fightbulc/simplon_phtml.git",
+                "reference": "c653c09edd001f949f652e1c51b20e473dccb07d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fightbulc/simplon_phtml/zipball/c653c09edd001f949f652e1c51b20e473dccb07d",
+                "reference": "c653c09edd001f949f652e1c51b20e473dccb07d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Simplon\\Phtml\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tino Ehrich",
+                    "email": "tino@bigpun.me",
+                    "role": "developer"
+                }
+            ],
+            "description": "Simple, straight forward implementation of php templates.",
+            "homepage": "https://github.com/fightbulc/simplon_phtml",
+            "keywords": [
+                "php",
+                "phtml",
+                "template"
+            ],
+            "time": "2014-11-13 12:27:48"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}

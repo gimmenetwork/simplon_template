@@ -1,0 +1,19 @@
+<?php echo $assetsHeader ?>
+
+<p><?php echo $fullName ?></p>
+
+<?php if ($hasNames === true): ?>
+    All names:
+    <ul>
+        <?php foreach ($names as $name): ?>
+            <li><?php echo $name ?></li>
+        <?php endforeach ?>
+    </ul>
+<?php endif ?>
+
+<h3>Custom</h3>
+<?php echo $lang('group', 'key') ?>
+
+<?php echo $assetsBody ?>
+
+
