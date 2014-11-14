@@ -1,6 +1,6 @@
 {
     "name": "simplon/template",
-    "description": "Simple templating solution w/ mustache and phtml renders (mustache, phtml, templates)",
+    "description": "Simple templating solution w/ assets handling (mustache, phtml, assets)",
     "homepage": "https://github.com/fightbulc/simplon_template",
     "type": "library",
     "keywords": [
