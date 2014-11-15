@@ -77,19 +77,6 @@ class Template
     }
 
     /**
-     * @param array $params
-     *
-     * @return array
-     */
-    private function enrichParamsWithAssets(array $params)
-    {
-        $params['assetsHeader'] = "\n" . join("\n", $this->assetsHeader) . "\n";
-        $params['assetsBody'] = "\n" . join("\n", $this->assetsBody) . "\n";
-
-        return $params;
-    }
-
-    /**
      * @param $pathTemplate
      * @param array $params
      * @param array $customerParsers
@@ -124,5 +111,18 @@ class Template
         $template = Phtml::render($pathTemplate, $params);
 
         return (string)$template;
+    }
+
+    /**
+     * @param array $params
+     *
+     * @return array
+     */
+    private function enrichParamsWithAssets(array $params)
+    {
+        $params['assetsHeader'] = "\n" . join("\n", $this->assetsHeader) . "\n";
+        $params['assetsBody'] = "\n" . join("\n", $this->assetsBody) . "\n";
+
+        return $params;
     }
 }
