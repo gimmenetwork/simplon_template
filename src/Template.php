@@ -27,7 +27,7 @@ class Template
      *
      * @return bool
      */
-    public function setAssetHeader(array $pathAssets)
+    public function setAssetsHeader(array $pathAssets)
     {
         foreach ($pathAssets as $path)
         {
@@ -54,7 +54,7 @@ class Template
      *
      * @return bool
      */
-    public function setAssetBody(array $pathAssets)
+    public function setAssetsBody(array $pathAssets)
     {
         foreach ($pathAssets as $path)
         {
