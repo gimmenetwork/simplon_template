@@ -23,6 +23,11 @@ class Template
     private $assetsBody = [];
 
     /**
+     * @var array
+     */
+    private $assetsInline = [];
+
+    /**
      * @param array $pathAssets
      *
      * @return bool
@@ -77,6 +82,18 @@ class Template
     }
 
     /**
+     * @param $code
+     *
+     * @return bool
+     */
+    public function addAssetInline($code)
+    {
+        $this->assetsInline[] = $code;
+
+        return true;
+    }
+
+    /**
      * @param $pathTemplate
      * @param array $params
      * @param array $customerParsers
@@ -122,6 +139,7 @@ class Template
     {
         $params['assetsHeader'] = "\n" . join("\n", $this->assetsHeader) . "\n";
         $params['assetsBody'] = "\n" . join("\n", $this->assetsBody) . "\n";
+        $params['assetsInline'] = "\n<script type=\"text/javascript\">\n" . join(";\n", $this->assetsInline) . "</script>\n";
 
         return $params;
     }
