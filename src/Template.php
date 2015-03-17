@@ -3,53 +3,54 @@
 namespace Simplon\Template;
 
 use Simplon\Mustache\Mustache;
+use Simplon\Mustache\MustacheException;
 use Simplon\Phtml\Phtml;
 
 /**
  * Template
  * @package Simplon\Template
- * @author Tino Ehrich (tino@bigpun.me)
+ * @author  Tino Ehrich (tino@bigpun.me)
  */
 class Template
 {
     /**
      * @var array
      */
-    private $assetsHeader = [];
+    private $assetsCss = [];
 
     /**
      * @var array
      */
-    private $assetsBody = [];
+    private $assetsJs = [];
 
     /**
      * @var array
      */
-    private $assetsInline = [];
+    private $assetsCode = [];
 
     /**
      * @param array $pathAssets
      *
      * @return bool
      */
-    public function setAssetsHeader(array $pathAssets)
+    public function setAssetsCss(array $pathAssets)
     {
         foreach ($pathAssets as $path)
         {
-            $this->addAssetHeader($path);
+            $this->addAssetCss($path);
         }
 
         return true;
     }
 
     /**
-     * @param $pathAsset
+     * @param string $pathAsset
      *
      * @return bool
      */
-    public function addAssetHeader($pathAsset)
+    public function addAssetCss($pathAsset)
     {
-        $this->assetsHeader[] = '<link rel="stylesheet" href="' . $pathAsset . '">';
+        $this->assetsCss[] = '<link rel="stylesheet" href="' . $pathAsset . '">';
 
         return true;
     }
@@ -59,47 +60,47 @@ class Template
      *
      * @return bool
      */
-    public function setAssetsBody(array $pathAssets)
+    public function setAssetsJs(array $pathAssets)
     {
         foreach ($pathAssets as $path)
         {
-            $this->addAssetBody($path);
+            $this->addAssetJs($path);
         }
 
         return true;
     }
 
     /**
-     * @param $pathAsset
+     * @param string $pathAsset
      *
      * @return bool
      */
-    public function addAssetBody($pathAsset)
+    public function addAssetJs($pathAsset)
     {
-        $this->assetsBody[] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
+        $this->assetsJs[] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
 
         return true;
     }
 
     /**
-     * @param $code
+     * @param string $code
      *
      * @return bool
      */
-    public function addAssetInline($code)
+    public function addAssetCode($code)
     {
-        $this->assetsInline[] = $code;
+        $this->assetsCode[] = $code;
 
         return true;
     }
 
     /**
-     * @param $pathTemplate
-     * @param array $params
-     * @param array $customerParsers
+     * @param string $pathTemplate
+     * @param array  $params
+     * @param array  $customerParsers
      *
      * @return string
-     * @throws \Simplon\Mustache\MustacheException
+     * @throws MustacheException
      */
     public function renderMustache($pathTemplate, array $params = [], array $customerParsers = [])
     {
@@ -113,11 +114,11 @@ class Template
     }
 
     /**
-     * @param $pathTemplate
-     * @param array $params
+     * @param string $pathTemplate
+     * @param array  $params
      *
      * @return string
-     * @throws \Simplon\Mustache\MustacheException
+     * @throws MustacheException
      */
     public function renderPhtml($pathTemplate, array $params = [])
     {
@@ -137,9 +138,9 @@ class Template
      */
     private function enrichParamsWithAssets(array $params)
     {
-        $params['assetsHeader'] = "\n" . join("\n", $this->assetsHeader) . "\n";
-        $params['assetsBody'] = "\n" . join("\n", $this->assetsBody) . "\n";
-        $params['assetsInline'] = "\n<script type=\"text/javascript\">\n" . join(";\n", $this->assetsInline) . "</script>\n";
+        $params['assetsCss'] = "\n" . join("\n", $this->assetsCss) . "\n";
+        $params['assetsJs'] = "\n" . join("\n", $this->assetsJs) . "\n";
+        $params['assetsCode'] = "\n<script type=\"text/javascript\">\n" . join(";\n", $this->assetsCode) . "</script>\n";
 
         return $params;
     }

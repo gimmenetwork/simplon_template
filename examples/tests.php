@@ -30,8 +30,8 @@ $customParsers = [
     ]
 ];
 
-$template->addAssetHeader('/css/master.css');
-$template->addAssetBody('/js/jquery.js');
+$template->addAssetCss('/css/master.css');
+$template->addAssetJs('/js/jquery.js');
 
 // ----------------------------------------------
 
