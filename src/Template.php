@@ -50,7 +50,7 @@ class Template
      */
     public function addAssetCss($pathAsset)
     {
-        $this->assetsCss[] = '<link rel="stylesheet" href="' . $pathAsset . '">';
+        $this->assetsCss[md5($pathAsset)] = '<link rel="stylesheet" href="' . $pathAsset . '">';
 
         return true;
     }
@@ -77,7 +77,7 @@ class Template
      */
     public function addAssetJs($pathAsset)
     {
-        $this->assetsJs[] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
+        $this->assetsJs[md5($pathAsset)] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
 
         return true;
     }
