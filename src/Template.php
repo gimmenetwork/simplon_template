@@ -84,20 +84,21 @@ class Template
 
     /**
      * @param string $code
+     * @param string $blockId
      *
      * @return bool
      */
-    public function addAssetCode($code)
+    public function addAssetCode($code, $blockId = 'default')
     {
-        $this->assetsCode[] = $code;
+        $this->assetsCode[$blockId][] = $code;
 
         return true;
     }
 
     /**
      * @param string $pathTemplate
-     * @param array  $params
-     * @param array  $customerParsers
+     * @param array $params
+     * @param array $customerParsers
      *
      * @return string
      * @throws MustacheException
@@ -115,7 +116,7 @@ class Template
 
     /**
      * @param string $pathTemplate
-     * @param array  $params
+     * @param array $params
      *
      * @return string
      * @throws MustacheException
@@ -138,9 +139,17 @@ class Template
      */
     private function enrichParamsWithAssets(array $params)
     {
+        $params['assetsCode'] = ['default' => null];
         $params['assetsCss'] = "\n" . join("\n", $this->assetsCss) . "\n";
         $params['assetsJs'] = "\n" . join("\n", $this->assetsJs) . "\n";
-        $params['assetsCode'] = "\n<script type=\"text/javascript\">\n" . join(";\n", $this->assetsCode) . "</script>\n";
+
+        if (empty($this->assetsCode) === false)
+        {
+            foreach ($this->assetsCode as $blockId => $code)
+            {
+                $params['assetsCode'][$blockId] = "\n<script type=\"text/javascript\">\n" . join(";\n", $code) . "</script>\n";
+            }
+        }
 
         return $params;
     }
