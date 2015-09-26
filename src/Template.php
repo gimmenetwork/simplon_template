@@ -35,9 +35,12 @@ class Template
      */
     public function setAssetsCss(array $pathAssets)
     {
-        foreach ($pathAssets as $path)
+        foreach ($pathAssets as $blockId => $paths)
         {
-            $this->addAssetCss($path);
+            foreach ($paths as $path)
+            {
+                $this->addAssetCss($path, $blockId);
+            }
         }
 
         return true;
@@ -45,12 +48,18 @@ class Template
 
     /**
      * @param string $pathAsset
+     * @param string $blockId
      *
      * @return bool
      */
-    public function addAssetCss($pathAsset)
+    public function addAssetCss($pathAsset, $blockId = null)
     {
-        $this->assetsCss[md5($pathAsset)] = '<link rel="stylesheet" href="' . $pathAsset . '">';
+        if ($blockId === null)
+        {
+            $blockId = 'default';
+        }
+
+        $this->assetsCss[$blockId][md5($pathAsset)] = '<link rel="stylesheet" href="' . $pathAsset . '">';
 
         return true;
     }
@@ -62,9 +71,12 @@ class Template
      */
     public function setAssetsJs(array $pathAssets)
     {
-        foreach ($pathAssets as $path)
+        foreach ($pathAssets as $blockId => $paths)
         {
-            $this->addAssetJs($path);
+            foreach ($paths as $path)
+            {
+                $this->addAssetJs($path, $blockId);
+            }
         }
 
         return true;
@@ -72,12 +84,18 @@ class Template
 
     /**
      * @param string $pathAsset
+     * @param string $blockId
      *
      * @return bool
      */
-    public function addAssetJs($pathAsset)
+    public function addAssetJs($pathAsset, $blockId = null)
     {
-        $this->assetsJs[md5($pathAsset)] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
+        if ($blockId === null)
+        {
+            $blockId = 'default';
+        }
+
+        $this->assetsJs[$blockId][md5($pathAsset)] = '<script type="text/javascript" src="' . $pathAsset . '"></script>';
 
         return true;
     }
@@ -88,8 +106,13 @@ class Template
      *
      * @return bool
      */
-    public function addAssetCode($code, $blockId = 'default')
+    public function addAssetCode($code, $blockId = null)
     {
+        if ($blockId === null)
+        {
+            $blockId = 'default';
+        }
+
         $this->assetsCode[$blockId][] = $code;
 
         return true;
@@ -139,18 +162,36 @@ class Template
      */
     private function enrichParamsWithAssets(array $params)
     {
-        $params['assetsCode'] = ['default' => null];
-        $params['assetsCss'] = "\n" . join("\n", $this->assetsCss) . "\n";
-        $params['assetsJs'] = "\n" . join("\n", $this->assetsJs) . "\n";
-
-        if (empty($this->assetsCode) === false)
-        {
-            foreach ($this->assetsCode as $blockId => $code)
-            {
-                $params['assetsCode'][$blockId] = "\n<script type=\"text/javascript\">\n" . join(";\n", $code) . "</script>\n";
-            }
-        }
+        $params = array_merge($params, $this->flattenAssets('css', $this->assetsCss));
+        $params = array_merge($params, $this->flattenAssets('js', $this->assetsJs));
+        $params = array_merge($params, $this->flattenAssets('code', $this->assetsCode, '<script type=\"text/javascript\">{code}</script>'));
 
         return $params;
+    }
+
+    /**
+     * @param string $type
+     * @param array $blockAssets
+     * @param string $wrapper
+     *
+     * @return array
+     */
+    private function flattenAssets($type, array $blockAssets, $wrapper = null)
+    {
+        $flatAssets = [];
+
+        foreach ($blockAssets as $blockId => $assets)
+        {
+            $code = "\n" . join("\n", $assets) . "\n";
+
+            if ($wrapper !== null)
+            {
+                $code = str_replace('{code}', $code, $wrapper);
+            }
+
+            $flatAssets[$type . ucfirst(strtolower($blockId))] = $code;
+        }
+
+        return $flatAssets;
     }
 }
