@@ -164,7 +164,7 @@ class Template
     {
         $params = array_merge($params, $this->flattenAssets('css', $this->assetsCss));
         $params = array_merge($params, $this->flattenAssets('js', $this->assetsJs));
-        $params = array_merge($params, $this->flattenAssets('code', $this->assetsCode, '<script type=\"text/javascript\">{code}</script>'));
+        $params = array_merge($params, $this->flattenAssets('code', $this->assetsCode, true));
 
         return $params;
     }
@@ -172,11 +172,11 @@ class Template
     /**
      * @param string $type
      * @param array $blockAssets
-     * @param string $wrapper
+     * @param bool $isCode
      *
      * @return array
      */
-    private function flattenAssets($type, array $blockAssets, $wrapper = null)
+    private function flattenAssets($type, array $blockAssets, $isCode = false)
     {
         $flatAssets = [];
 
@@ -184,9 +184,10 @@ class Template
         {
             $code = "\n" . join("\n", $assets) . "\n";
 
-            if ($wrapper !== null)
+            if ($isCode === true && strpos($code, '<script') === false)
             {
-                $code = str_replace('{code}', $code, $wrapper);
+                /** @noinspection BadExpressionStatementJS */
+                $code = str_replace('{code}', $code, '<script type="text/javascript">{code}</script>');
             }
 
             $flatAssets[$type . ucfirst(strtolower($blockId))] = $code;
