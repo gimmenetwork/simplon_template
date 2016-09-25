@@ -3,7 +3,6 @@
 namespace Simplon\Template;
 
 use Simplon\Mustache\Mustache;
-use Simplon\Mustache\MustacheException;
 use Simplon\Phtml\Phtml;
 
 /**
@@ -122,17 +121,17 @@ class Template
      * @param string $pathTemplate
      * @param array $params
      * @param array $customerParsers
+     * @param bool $withFileExtension
      *
      * @return string
-     * @throws MustacheException
      */
-    public function renderMustache($pathTemplate, array $params = [], array $customerParsers = [])
+    public function renderMustache($pathTemplate, array $params = [], array $customerParsers = [], $withFileExtension = false)
     {
         // handle assets
         $params = $this->enrichParamsWithAssets($params);
 
         // render template
-        $template = Mustache::renderByFile($pathTemplate, $params, $customerParsers);
+        $template = Mustache::renderByFile($pathTemplate, $params, $customerParsers, $withFileExtension ? '' : 'mustache');
 
         return (string)$template;
     }
@@ -140,17 +139,17 @@ class Template
     /**
      * @param string $pathTemplate
      * @param array $params
+     * @param bool $withFileExtension
      *
      * @return string
-     * @throws MustacheException
      */
-    public function renderPhtml($pathTemplate, array $params = [])
+    public function renderPhtml($pathTemplate, array $params = [], $withFileExtension = false)
     {
         // handle assets
         $params = $this->enrichParamsWithAssets($params);
 
         // render template
-        $template = Phtml::render($pathTemplate, $params);
+        $template = Phtml::render($pathTemplate, $params, $withFileExtension ? '' : '.phtml');
 
         return (string)$template;
     }
