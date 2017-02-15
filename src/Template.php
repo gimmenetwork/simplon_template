@@ -3,6 +3,7 @@
 namespace Simplon\Template;
 
 use Simplon\Mustache\Mustache;
+use Simplon\Mustache\MustacheException;
 use Simplon\Phtml\Phtml;
 
 /**
@@ -24,6 +25,7 @@ class Template
      * @var array
      */
     private $assetsCode = [];
+
     /**
      * @return array
      */
@@ -163,7 +165,7 @@ class Template
      * @param bool $withFileExtension
      *
      * @return string
-     * @throws \Simplon\Mustache\MustacheException
+     * @throws MustacheException
      */
     public function renderMustache($pathTemplate, array $params = [], array $customerParsers = [], $withFileExtension = false)
     {
@@ -261,7 +263,8 @@ class Template
 
             $code = "\n" . implode("\n", $lines) . "\n";
 
-            if ($isCode === true && strpos($code, '<script') === false)
+            // wrap code item in <script...> if code does not hold </script> nor </noscript>
+            if ($isCode === true && strpos($code, '</script>') === false && strpos($code, '</noscript>') === false)
             {
                 $code = str_replace('{item}', $code, $wrappers['code']);
             }
