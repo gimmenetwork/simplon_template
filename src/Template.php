@@ -5,6 +5,7 @@ namespace Simplon\Template;
 use Simplon\Mustache\Mustache;
 use Simplon\Mustache\MustacheException;
 use Simplon\Phtml\Phtml;
+use Simplon\Phtml\PhtmlException;
 
 /**
  * Template
@@ -184,7 +185,7 @@ class Template
      * @param bool $withFileExtension
      *
      * @return string
-     * @throws \Simplon\Phtml\PhtmlException
+     * @throws PhtmlException
      */
     public function renderPhtml($pathTemplate, array $params = [], $withFileExtension = false)
     {
@@ -269,7 +270,7 @@ class Template
                 $code = str_replace('{item}', $code, $wrappers['code']);
             }
 
-            $flatAssets[$type . ucfirst(strtolower($blockId))] = $code;
+            $flatAssets[$type . ucfirst($blockId)] = $code;
         }
 
         return $flatAssets;
