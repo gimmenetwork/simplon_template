@@ -1,31 +1,31 @@
 {
-    "name": "simplon/template",
-    "description": "Simple templating solution w/ assets handling (mustache, phtml, assets)",
-    "homepage": "https://github.com/fightbulc/simplon_template",
-    "type": "library",
-    "keywords": [
-        "templates",
-        "mustache",
-        "phtml",
-        "fast",
-        "lightweight"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tino Ehrich",
-            "email": "tino@bigpun.me",
-            "role": "developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.4",
-        "simplon/mustache": "0.1.*",
-        "simplon/phtml": "0.1.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Simplon\\Template\\": "src/"
-        }
+  "name": "simplon/template",
+  "description": "Simple templating solution w/ assets handling (mustache, phtml, assets)",
+  "homepage": "https://github.com/fightbulc/simplon_template",
+  "type": "library",
+  "keywords": [
+    "templates",
+    "mustache",
+    "phtml",
+    "fast",
+    "lightweight"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tino Ehrich",
+      "email": "tino@bigpun.me",
+      "role": "developer"
     }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "simplon/mustache": "^0.1",
+    "simplon/phtml": "^0.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Simplon\\Template\\": "src/"
+    }
+  }
 }

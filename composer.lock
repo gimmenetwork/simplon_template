@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df6dd2f8ff2e72ef82f9afa83211b6b8",
+    "content-hash": "681bc751f5840bfb68e22368954554cb",
     "packages": [
         {
             "name": "simplon/mustache",
-            "version": "0.1.9",
+            "version": "0.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fightbulc/simplon_mustache.git",
-                "reference": "2b65d52cb1ad08bd34dcc045d9225e20660c91dc"
+                "reference": "00d95584b4bf8e64e1c3974966dbd13cabc7fe2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fightbulc/simplon_mustache/zipball/2b65d52cb1ad08bd34dcc045d9225e20660c91dc",
-                "reference": "2b65d52cb1ad08bd34dcc045d9225e20660c91dc",
+                "url": "https://api.github.com/repos/fightbulc/simplon_mustache/zipball/00d95584b4bf8e64e1c3974966dbd13cabc7fe2c",
+                "reference": "00d95584b4bf8e64e1c3974966dbd13cabc7fe2c",
                 "shasum": ""
             },
             "require": {
@@ -51,20 +51,20 @@
                 "mustache",
                 "template"
             ],
-            "time": "2014-11-14 11:51:35"
+            "time": "2015-02-07T21:44:54+00:00"
         },
         {
             "name": "simplon/phtml",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fightbulc/simplon_phtml.git",
-                "reference": "c653c09edd001f949f652e1c51b20e473dccb07d"
+                "reference": "89a7a1dbf9ab70dbfba8a7170897129d533bb5ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fightbulc/simplon_phtml/zipball/c653c09edd001f949f652e1c51b20e473dccb07d",
-                "reference": "c653c09edd001f949f652e1c51b20e473dccb07d",
+                "url": "https://api.github.com/repos/fightbulc/simplon_phtml/zipball/89a7a1dbf9ab70dbfba8a7170897129d533bb5ae",
+                "reference": "89a7a1dbf9ab70dbfba8a7170897129d533bb5ae",
                 "shasum": ""
             },
             "require": {
@@ -94,7 +94,7 @@
                 "phtml",
                 "template"
             ],
-            "time": "2014-11-13 12:27:48"
+            "time": "2017-02-23T17:14:23+00:00"
         }
     ],
     "packages-dev": [],
@@ -102,6 +102,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },
