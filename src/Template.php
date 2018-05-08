@@ -161,9 +161,9 @@ class Template
 
     /**
      * @param string $pathTemplate
-     * @param array $params
-     * @param array $customerParsers
-     * @param bool $withFileExtension
+     * @param array  $params
+     * @param array  $customerParsers
+     * @param bool   $withFileExtension
      *
      * @return string
      * @throws MustacheException
@@ -181,25 +181,24 @@ class Template
 
     /**
      * @param string $pathTemplate
-     * @param array $params
-     * @param bool $withFileExtension
+     * @param array  $params
      *
      * @return string
      * @throws PhtmlException
      */
-    public function renderPhtml($pathTemplate, array $params = [], $withFileExtension = false)
+    public function renderPhtml($pathTemplate, array $params = [])
     {
         // handle assets
         $params = $this->enrichParamsWithAssets($params);
 
         // render template
-        $template = Phtml::render($pathTemplate, $params, $withFileExtension ? '' : '.phtml');
+        $template = Phtml::render($pathTemplate, $params);
 
         return (string)$template;
     }
 
     /**
-     * @param array $assets
+     * @param array  $assets
      * @param string $blockId
      * @param string $item
      *
@@ -233,8 +232,8 @@ class Template
 
     /**
      * @param string $type
-     * @param array $blockAssets
-     * @param bool $isCode
+     * @param array  $blockAssets
+     * @param bool   $isCode
      *
      * @return array
      */
