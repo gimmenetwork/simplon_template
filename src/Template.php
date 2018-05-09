@@ -7,11 +7,6 @@ use Simplon\Mustache\MustacheException;
 use Simplon\Phtml\Phtml;
 use Simplon\Phtml\PhtmlException;
 
-/**
- * Template
- * @package Simplon\Template
- * @author  Tino Ehrich (tino@bigpun.me)
- */
 class Template
 {
     /**
@@ -270,16 +265,6 @@ class Template
             }
 
             $flatAssets[$type . ucfirst($blockId)] = $code;
-
-            // for optimised assets loading
-            if ($type === 'css')
-            {
-                $flatAssets[$type . 'Preload'] = str_replace('rel="stylesheet"', 'rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"', $code);
-            }
-            elseif ($type === 'js')
-            {
-                $flatAssets[$type . 'Defer'] = str_replace('<script', '<script defer', $code);
-            }
         }
 
         return $flatAssets;
