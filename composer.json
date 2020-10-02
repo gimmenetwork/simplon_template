@@ -1,6 +1,6 @@
 {
-  "name": "simplon/template",
-  "description": "Simple templating solution w/ assets handling (mustache, phtml, assets)",
+  "name": "gimmenetwork/simplon_template",
+  "description": "[FORK] Simple templating solution w/ assets handling (mustache, phtml, assets)",
   "homepage": "https://github.com/fightbulc/simplon_template",
   "type": "library",
   "keywords": [
@@ -18,10 +18,20 @@
       "role": "developer"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/gimmenetwork/simplon_mustache"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/gimmenetwork/simplon_phtml"
+    }
+  ],
   "require": {
     "php": ">=5.4",
-    "simplon/mustache": "^0.1",
-    "simplon/phtml": "^0.2"
+    "gimmenetwork/simplon_mustache": "^0.1",
+    "gimmenetwork/simplon_phtml": "^0.2"
   },
   "autoload": {
     "psr-4": {
