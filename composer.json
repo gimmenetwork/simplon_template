@@ -37,5 +37,8 @@
     "psr-4": {
       "Simplon\\Template\\": "src/"
     }
+  },
+  "replace": {
+    "simplon/template": "0.8.*"
   }
 }
