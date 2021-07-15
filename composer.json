@@ -30,7 +30,7 @@
   ],
   "require": {
     "php": ">=5.4",
-    "gimmenetwork/simplon_mustache": "^0.1",
+    "gimmenetwork/simplon_mustache": "0.1.*",
     "gimmenetwork/simplon_phtml": "^0.2"
   },
   "autoload": {
